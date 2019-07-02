@@ -17,10 +17,10 @@ const styles = theme => ({
   },
 })
 
-const NavBar = ({ classes }) => (
+const Info = ({ classes }) => (
   <nav className={classes.navbar}>
     <h1 className={classes.text}>Mergus</h1>
   </nav>
 )
 
-export default injectSheet(styles)(NavBar);
+export default injectSheet(styles)(Info);
