@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSortDown } from '@fortawesome/free-solid-svg-icons';
+
 const styles = theme => ({
-  logo: {
-    maxHeight: 100
-  },
-  title: {
-    color: theme.textPrimary,
-  },
-  container: {
-    display: 'flex',
-    alignItems: 'center'
-  }
+    text: {
+        textAlign: 'right'
+    }
 })
 
 class Status extends Component {
@@ -28,9 +24,12 @@ class Status extends Component {
     }
 
     render() {
-        return(
-            <h3>Status:
-                <span onClick={this.handleClick}> {this.state.status}</span>
+        const { classes } = this.props
+        return (
+            <h3 className={classes.text}>Status: <span onClick={this.handleClick}> 
+                 {this.state.status} 
+                <FontAwesomeIcon icon={faSortDown} transform="up-2 right-2" />
+                </span>
             </h3>
         )
     }

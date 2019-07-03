@@ -1,26 +1,27 @@
 import React from 'react';
 import injectSheet from 'react-jss';
 
+import Card from './card'
+
 const styles = theme => ({
-  navbar: {
-    position: 'fixed',
-    top: 0,
-    width: '100%',
-    backgroundColor: theme.colorPrimary,
-    margin: 0,
-    padding: 0,
-  },
-  text: {
-    color: theme.textPrimary,
-    margin: 0,
-    padding: 10,
-  },
+    container: {
+        padding: theme.paddingMD,
+    },
+    text: {
+        textIndent: 50,
+        margin: theme.marginX,
+        lineHeight: 1.6,
+    }
 })
 
-const Info = ({ classes }) => (
-  <nav className={classes.navbar}>
-    <h1 className={classes.text}>Mergus</h1>
-  </nav>
+const Info = ({ classes, content }) => (
+    //<Card>
+        <div >
+            <p className={classes.text}>
+                {content}
+            </p>
+        </div>
+    //</Card>
 )
 
 export default injectSheet(styles)(Info);

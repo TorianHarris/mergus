@@ -9,11 +9,12 @@ const styles = theme => ({
     backgroundColor: theme.colorPrimary,
     margin: 0,
     padding: 0,
+    zIndex: 999,
   },
   text: {
     color: theme.textPrimary,
     margin: 0,
-    padding: 10,
+    padding: theme.paddingSM,
   },
 })
 
