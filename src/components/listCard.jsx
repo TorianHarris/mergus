@@ -7,6 +7,10 @@ const styles = theme => ({
       borderRadius: handleBorder,
       position: 'relative',
       overflow: 'hidden',
+      '&:hover': {
+          backgroundColor: 'gray',
+          color: 'white'
+      }
   }
 })
 const handleBorder = ({first, last}) => {
@@ -15,8 +19,8 @@ const handleBorder = ({first, last}) => {
     return `${top}px ${top}px ${bottom}px ${bottom}px`;
 }
 
-const Card = ({ classes, children }) => (
-<div className={classes.card}>
+const Card = ({ classes, children, click }) => (
+<div className={classes.card} onClick={click}>
     {children}
 </div>
 )
