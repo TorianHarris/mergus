@@ -9,17 +9,18 @@ const styles = theme => ({
     backgroundColor: theme.colorPrimary,
     margin: 0,
     padding: 0,
+    zIndex: 999,
   },
   text: {
-    color: 'blue',
+    color: theme.textPrimary,
     margin: 0,
-    padding: 10
+    padding: theme.paddingSM,
   },
 })
 
-const NavBar = ({ classes, children }) => (
+const NavBar = ({ classes }) => (
   <nav className={classes.navbar}>
-    <h1 className={classes.text}>Hello World!</h1>
+    <h1 className={classes.text}>Mergus</h1>
   </nav>
 )
 
