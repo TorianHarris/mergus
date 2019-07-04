@@ -23,11 +23,9 @@ const handleClick = () => {
 
 const Contact = ({ classes, info }) => (
     <div className={classes.container}>
-        <ListCard index={7}>
             <p>
                 {info.name} | {info.position}
             </p>
-        </ListCard>
     </div>
 )
 

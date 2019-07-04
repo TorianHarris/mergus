@@ -3,19 +3,16 @@ import injectSheet from 'react-jss';
 
 const styles = theme => ({
   card: {
+      border: `0.5px solid gray`,
       borderRadius: handleBorder,
-      backgroundColor: 'red',
       position: 'relative',
       overflow: 'hidden',
-      margin: theme.marginY,
   }
 })
-const handleBorder = ({index}) => {
-    console.log(index);
-    // switch (pos) {
-    //     case: ''
-    // }
-    // return `${} `;
+const handleBorder = ({first, last}) => {
+    const top = first ? 7 : 0;
+    const bottom = last ? 7 : 0;
+    return `${top}px ${top}px ${bottom}px ${bottom}px`;
 }
 
 const Card = ({ classes, children }) => (
