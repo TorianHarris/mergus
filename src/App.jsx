@@ -37,16 +37,16 @@ export default class App extends Component {
     this.state = {
       targets: data,
       currentTarget: data[0],
-      modalDisplay: true
+      modalDisplay: false
     };
   }
 
-//   componentDidMount = () => {
-//     this.setState({
-//         targets: data,
-//         currentTarget: data[0], 
-//     });
-//   }
+  handleTargetClick = index => {
+    this.setState({
+        currentTarget: data[index],
+        modalDisplay: true,
+    })
+  }
 
   render() {
     return (
@@ -54,7 +54,7 @@ export default class App extends Component {
         <>
           <NavBar />
           <div style={theme.content}>
-            <HomePage data={this.state.target} />
+            <HomePage data={this.state.targets} targetClick={this.handleTargetClick}/>
             {this.state.modalDisplay ? <CompanyModal data={this.state.currentTarget} /> : null}
           </div>
         </>

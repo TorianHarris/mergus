@@ -10,6 +10,7 @@ const CompanyModal = ({ data }) => (
   <>
     <DropDown
       prefix="Status"
+      current={data.status}
       items={["Researching", "Pending Approval", "Approved", "Declined"]}
     />
     <Brand name={data.name} />

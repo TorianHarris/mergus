@@ -32,9 +32,16 @@ class Dropdown extends Component {
 
   componentDidMount = () => {
     this.setState({
-      header: this.props.items[0]
+      header: this.props.current ? this.props.current : this.props.items[0]
     });
   };
+
+  componentWillReceiveProps = () => {
+      if(this.props.current && this.state.header !== this.props.current)
+      this.setState({
+          header: this.props.current
+      })
+  }
 
   handleClick = () => {
     this.setState({
@@ -50,12 +57,12 @@ class Dropdown extends Component {
   };
 
   render() {
-    const { classes, items, prefix } = this.props;
+    const { classes, items, prefix, current } = this.props;
     return (
       <div className={classes.text}>
         <div>
           <h3 onClick={this.handleClick}>
-            {prefix}: {this.state.header}
+            {prefix}: { this.state.header }
             <span>
               <FontAwesomeIcon icon={faSortDown} transform="up-2 right-4" />
             </span>
@@ -63,7 +70,7 @@ class Dropdown extends Component {
         </div>
         {this.state.open ? (
           <div>
-            {this.props.items.map((item, i, arr) => (
+            {items.map((item, i, arr) => (
               <ListCard first={i === 0} last={i === arr.length - 1} click={() => this.handleSelect(item)}>
                 <h3 className={classes.item}>
                   {item}
