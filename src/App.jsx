@@ -10,11 +10,12 @@ import { ThemeProvider } from "react-jss";
 import NavBar from "./components/navbar";
 import HomePage from "./views/homePage";
 import CompanyModal from "./views/companyModal";
-import Modal from "./components/modal";
+import AddCompanyModal from "./views/addCompanyModal";
 
 //theming css
 const theme = {
   colorPrimary: "#607d8b",
+  colorPrimaryDark: "#60688b",
   colorSecondary: "#eb0009",
   textPrimary: "white",
   textSecondary: "grey",
@@ -38,31 +39,35 @@ export default class App extends Component {
     this.state = {
       targets: data,
       currentTarget: data[0],
-      modalDisplay: false
+      addCompanyDisplay: false,
+      viewCompanyDisplay: false
     };
   }
 
   handleTargetClick = index => {
     this.setState({
       currentTarget: data[index],
-      modalDisplay: true
+      viewCompanyDisplay: true
     });
   };
 
-  handleModalClose = () => {
+  handleAddClick = () => {
     this.setState({
-      modalDisplay: false
+      addCompanyDisplay: true
     });
   };
 
-  //   handleTargetUpdate = newTarget => {
-  //     if (newTarget) {
-  //       this.setState({
-  //         currentTarget: newTarget
-  //       });
-  //       console.log(newTarget);
-  //     }
-  //   };
+  handleViewModalClose = () => {
+    this.setState({
+      viewCompanyDisplay: false,
+    });
+  };
+
+  handleAddModalClose = () => {
+    this.setState({
+      addCompanyDisplay: false
+    });
+  };
 
   render() {
     return (
@@ -73,9 +78,18 @@ export default class App extends Component {
             <HomePage
               data={this.state.targets}
               targetClick={this.handleTargetClick}
+              displayModal={this.handleAddClick}
             />
           </div>
-            <CompanyModal data={this.state.currentTarget}  handleClose={this.handleModalClose} open={this.state.modalDisplay}/>
+          <AddCompanyModal
+            handleClose={this.handleAddModalClose}
+            open={this.state.addCompanyDisplay}
+          />
+          <CompanyModal
+            data={this.state.currentTarget}
+            handleClose={this.handleViewModalClose}
+            open={this.state.viewCompanyDisplay}
+          />
         </>
       </ThemeProvider>
     );

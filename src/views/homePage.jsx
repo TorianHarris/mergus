@@ -25,11 +25,11 @@ const styles = theme => ({
   }
 });
 
-const HomePage = ({ data, classes, targetClick, targetUpdate }) => (
+const HomePage = ({ data, classes, targetClick, displayModal, targetUpdate }) => (
   <div className={classes.container}>
     <div className={classes.topBar}>
       <DropDown prefix="Sort By" items={["Name", "Date Added", "Status"]} />
-      <ActionButton icon="add" />
+      <ActionButton icon="add" click={displayModal}/>
     </div>
     <div className={classes.targetContainer}>
       {data.map((target, i, arr) => (

@@ -50,18 +50,6 @@ class Modal extends Component {
     this.props.handleClose();
   };
 
-//   handleOpen = () => {
-//     this.setState({
-//       open: true
-//     });
-//   };
-
-//   handleClose = () => {
-//     this.setState({
-//       open: false
-//     });
-//   };
-
   handleSelect = item => {
     this.setState({
       open: false,
