@@ -15,7 +15,7 @@ import Modal from "./components/modal";
 //theming css
 const theme = {
   colorPrimary: "#607d8b",
-  colorSecondary: "grey",
+  colorSecondary: "#eb0009",
   textPrimary: "white",
   textSecondary: "grey",
   textContent: "grey",
@@ -54,6 +54,7 @@ export default class App extends Component {
       modalDisplay: false
     });
   };
+
   //   handleTargetUpdate = newTarget => {
   //     if (newTarget) {
   //       this.setState({
@@ -74,11 +75,7 @@ export default class App extends Component {
               targetClick={this.handleTargetClick}
             />
           </div>
-          {this.state.modalDisplay ? (
-            <Modal close={this.handleModalClose}>
-              <CompanyModal data={this.state.currentTarget} />
-            </Modal>
-          ) : null}
+            <CompanyModal data={this.state.currentTarget}  handleClose={this.handleModalClose} open={this.state.modalDisplay}/>
         </>
       </ThemeProvider>
     );

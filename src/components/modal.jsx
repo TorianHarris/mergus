@@ -43,15 +43,24 @@ class Modal extends Component {
   };
 
   handleClick = e => {
-    if (this.node.contains(e.target)) {
-      this.setState({
-        open: true
-      });
+    if (this.props.open && this.node.contains(e.target)) {
       return;
     }
 
-    this.props.close();
+    this.props.handleClose();
   };
+
+//   handleOpen = () => {
+//     this.setState({
+//       open: true
+//     });
+//   };
+
+//   handleClose = () => {
+//     this.setState({
+//       open: false
+//     });
+//   };
 
   handleSelect = item => {
     this.setState({
@@ -62,12 +71,14 @@ class Modal extends Component {
   };
 
   render() {
-    const { classes, children, close } = this.props;
-    return (
+    const { classes, children, open } = this.props;
+    return open ? (
       <div className={classes.modalContainer}>
-        <div className={classes.modal} ref={node => (this.node = node)}>{children}</div>
+        <div className={classes.modal} ref={node => (this.node = node)}>
+          {children}
+        </div>
       </div>
-    );
+    ) : null;
   }
 }
 
