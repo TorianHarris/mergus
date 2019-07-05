@@ -25,7 +25,7 @@ const styles = theme => ({
   }
 });
 
-const HomePage = ({ data, classes, targetClick }) => (
+const HomePage = ({ data, classes, targetClick, targetUpdate }) => (
   <div className={classes.container}>
     <div className={classes.topBar}>
       <DropDown prefix="Sort By" items={["Name", "Date Added", "Status"]} />
@@ -33,7 +33,7 @@ const HomePage = ({ data, classes, targetClick }) => (
     </div>
     <div className={classes.targetContainer}>
       {data.map((target, i, arr) => (
-        <ListCard first={i === 0} last={i === arr.length - 1} click={() => targetClick(i)}>
+        <ListCard first={i === 0} last={i === arr.length - 1} click={() => targetClick(i)} >
           <p className={classes.targetDetails}>{target.name}</p>
           <ActionButton icon="delete" />
         </ListCard>

@@ -10,6 +10,7 @@ import { ThemeProvider } from "react-jss";
 import NavBar from "./components/navbar";
 import HomePage from "./views/homePage";
 import CompanyModal from "./views/companyModal";
+import Modal from "./components/modal";
 
 //theming css
 const theme = {
@@ -43,10 +44,24 @@ export default class App extends Component {
 
   handleTargetClick = index => {
     this.setState({
-        currentTarget: data[index],
-        modalDisplay: true,
-    })
-  }
+      currentTarget: data[index],
+      modalDisplay: true
+    });
+  };
+
+  handleModalClose = () => {
+    this.setState({
+      modalDisplay: false
+    });
+  };
+  //   handleTargetUpdate = newTarget => {
+  //     if (newTarget) {
+  //       this.setState({
+  //         currentTarget: newTarget
+  //       });
+  //       console.log(newTarget);
+  //     }
+  //   };
 
   render() {
     return (
@@ -54,9 +69,16 @@ export default class App extends Component {
         <>
           <NavBar />
           <div style={theme.content}>
-            <HomePage data={this.state.targets} targetClick={this.handleTargetClick}/>
-            {this.state.modalDisplay ? <CompanyModal data={this.state.currentTarget} /> : null}
+            <HomePage
+              data={this.state.targets}
+              targetClick={this.handleTargetClick}
+            />
           </div>
+          {this.state.modalDisplay ? (
+            <Modal close={this.handleModalClose}>
+              <CompanyModal data={this.state.currentTarget} />
+            </Modal>
+          ) : null}
         </>
       </ThemeProvider>
     );

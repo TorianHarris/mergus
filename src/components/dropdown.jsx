@@ -7,9 +7,8 @@ import { faSortDown } from "@fortawesome/free-solid-svg-icons";
 import ListCard from "./listCard";
 
 const styles = theme => ({
-  text: {
+  container: {
     display: "block",
-    // alignItems: "center",
     position: "relative",
     justifyContent: "flex-end",
     width: 250
@@ -30,55 +29,66 @@ class Dropdown extends Component {
     };
   }
 
-  componentDidMount = () => {
+  componentWillMount = () => {
+    document.addEventListener("mousedown", this.handleClick);
     this.setState({
       header: this.props.current ? this.props.current : this.props.items[0]
     });
   };
 
-  componentWillReceiveProps = () => {
-      if(this.props.current && this.state.header !== this.props.current)
-      this.setState({
-          header: this.props.current
-      })
-  }
+  componentWillUnmount = () => {
+    document.removeEventListener("mousedown", this.handleClick);
+  };
 
-  handleClick = () => {
+  handleClick = e => {
+    if (this.node.contains(e.target)) {
+      this.setState({
+        open: true
+      });
+      return;
+    }
+
+    this.handleClose();
+  };
+
+  handleClose = () => {
     this.setState({
-      open: !this.state.open
+      open: false
     });
   };
 
   handleSelect = item => {
     this.setState({
-        open: false,
-        header: item
-      });
+      open: false,
+      header: item
+    });
   };
 
   render() {
-    const { classes, items, prefix, current } = this.props;
+    const { classes, items, prefix } = this.props;
     return (
-      <div className={classes.text}>
+      <div className={classes.container} ref={node => (this.node = node)}>
         <div>
-          <h3 onClick={this.handleClick}>
-            {prefix}: { this.state.header }
+          <h3>
+            {prefix}: {this.state.header}
             <span>
               <FontAwesomeIcon icon={faSortDown} transform="up-2 right-4" />
             </span>
           </h3>
         </div>
-        {this.state.open ? (
-          <div>
-            {items.map((item, i, arr) => (
-              <ListCard first={i === 0} last={i === arr.length - 1} click={() => this.handleSelect(item)}>
-                <h3 className={classes.item}>
-                  {item}
-                </h3>
-              </ListCard>
-            ))}
-          </div>
-        ) : null}
+        <div ref={el => (this.el = el)}>
+          {this.state.open
+            ? items.map((item, i, arr) => (
+                <ListCard
+                  first={i === 0}
+                  last={i === arr.length - 1}
+                  click={() => this.handleSelect(item)}
+                >
+                  <h3 className={classes.item}>{item}</h3>
+                </ListCard>
+              ))
+            : null}
+        </div>
       </div>
     );
   }

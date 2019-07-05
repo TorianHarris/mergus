@@ -6,7 +6,7 @@ import Info from "../components/info";
 import Contacts from "../components/contacts";
 import Graph from "../components/graph";
 
-const CompanyModal = ({ data }) => (
+const CompanyModal = ({ data, targetUpdate }) => (
   <>
     <DropDown
       prefix="Status"
