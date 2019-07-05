@@ -7,6 +7,7 @@ const styles = theme => ({
         padding: theme.paddingSM,
         border: 'none',
         borderBottom: '1px solid #000',
+        textAlign: 'center',
         transition: 'all 0.5s ease',
         transitionProperty: 'width, borderBottom',
         '&:focus': {

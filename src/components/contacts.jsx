@@ -24,11 +24,11 @@ const Info = ({ classes, contacts }) => (
     <h1 className={classes.header}>Contacts</h1>
     <ActionButton click={handleClick} icon="add" />
     <div className={classes.contactContainer}>
-      {contacts.map((contact, i, arr) => (
+      {contacts.length > 0 ? contacts.map((contact, i, arr) => (
         <ListCard first={i === 0} last={i === arr.length - 1}>
           <Contact info={contact} />
         </ListCard>
-      ))}
+      )): 'No Contacts Yet'}
     </div>
   </Card>
 );

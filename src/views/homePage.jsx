@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import injectSheet from "react-jss";
 
 import DropDown from "../components/dropdown";
@@ -25,21 +26,27 @@ const styles = theme => ({
   }
 });
 
-const HomePage = ({ data, classes, targetClick, displayModal, targetUpdate }) => (
+
+const HomePage = ({ targets, classes, targetClick, displayModal, handleDelete }) => (
   <div className={classes.container}>
     <div className={classes.topBar}>
       <DropDown prefix="Sort By" items={["Name", "Date Added", "Status"]} />
       <ActionButton icon="add" click={displayModal}/>
     </div>
     <div className={classes.targetContainer}>
-      {data.map((target, i, arr) => (
-        <ListCard first={i === 0} last={i === arr.length - 1} click={() => targetClick(i)} >
+      {Array.isArray(targets) ? targets.map((target, i, arr) => (
+        <ListCard first={i === 0} last={i === arr.length - 1} click={() => targetClick(i)}>
           <p className={classes.targetDetails}>{target.name}</p>
-          <ActionButton icon="delete" />
+          <ActionButton icon="delete" click={(e) => handleDelete(e, i)}/>
         </ListCard>
-      ))}
+      )) : console.log(targets)}
     </div>
   </div>
 );
 
+HomePage.propTypes = {
+  targets: PropTypes.array
+}
+
 export default injectSheet(styles)(HomePage);
+

@@ -22,7 +22,7 @@ const styles = theme => ({
 });
 
 const Button = ({ classes, children, click }) => (
-  <div style={{}}>
+  <div>
     <button type="text" className={classes.button} onClick={click}>
       {children}
     </button>

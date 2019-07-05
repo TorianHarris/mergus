@@ -36,9 +36,11 @@
         ]
     },
     {
-        "name": "Shoju"
-    },
-    {
-        "name": "Us"
+        "name": "Shoju",
+        "description": "",
+        "earnings": [],
+        "status": "Researching",
+        "contacts": []
     }
+
 ]

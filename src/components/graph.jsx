@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { VictoryBar } from 'victory';
 
 export default class Main extends React.Component {

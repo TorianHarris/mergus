@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import data from "./data.json";
 
 // css imports
@@ -11,6 +10,7 @@ import NavBar from "./components/navbar";
 import HomePage from "./views/homePage";
 import CompanyModal from "./views/companyModal";
 import AddCompanyModal from "./views/addCompanyModal";
+import DeleteCompanyModal from "./views/deleteCompanyModal";
 
 //theming css
 const theme = {
@@ -40,7 +40,8 @@ export default class App extends Component {
       targets: data,
       currentTarget: data[0],
       addCompanyDisplay: false,
-      viewCompanyDisplay: false
+      viewCompanyDisplay: false,
+      deleteCompanyDisplay: false
     };
   }
 
@@ -59,13 +60,41 @@ export default class App extends Component {
 
   handleViewModalClose = () => {
     this.setState({
-      viewCompanyDisplay: false,
+      viewCompanyDisplay: false
     });
   };
 
   handleAddModalClose = () => {
     this.setState({
       addCompanyDisplay: false
+    });
+  };
+
+  handleAddTarget = newTarget => {
+    const newArr = this.state.targets;
+    newArr.push(newTarget);
+    this.setState(
+      {
+        targets: newArr
+      },
+      () => {
+        this.handleAddModalClose();
+      }
+    );
+  };
+
+  handleDeleteModalOpen = (event, index) => {
+    this.setState({
+        currentTarget: this.state.targets[index],
+        deleteCompanyDisplay: true
+      });
+    event.stopPropagation();
+    console.log(event)
+  };
+
+  handleDeleteModalClose = () => {
+    this.setState({
+      deleteCompanyDisplay: false
     });
   };
 
@@ -76,19 +105,26 @@ export default class App extends Component {
           <NavBar />
           <div style={theme.content}>
             <HomePage
-              data={this.state.targets}
+              targets={this.state.targets}
               targetClick={this.handleTargetClick}
               displayModal={this.handleAddClick}
+              handleDelete={this.handleDeleteModalOpen}
             />
           </div>
           <AddCompanyModal
             handleClose={this.handleAddModalClose}
             open={this.state.addCompanyDisplay}
+            handleAddTarget={this.handleAddTarget}
+          />
+          <DeleteCompanyModal
+            open={this.state.deleteCompanyDisplay}
+            handleClose={this.handleDeleteModalClose}
+            target={this.state.currentTarget}
           />
           <CompanyModal
             data={this.state.currentTarget}
-            handleClose={this.handleViewModalClose}
             open={this.state.viewCompanyDisplay}
+            handleClose={this.handleViewModalClose}
           />
         </>
       </ThemeProvider>

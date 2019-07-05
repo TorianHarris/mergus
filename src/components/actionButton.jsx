@@ -3,6 +3,7 @@ import injectSheet from "react-jss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faPlus, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import button from "./button";
 
 const styles = theme => ({
   actionButton: {
@@ -10,6 +11,7 @@ const styles = theme => ({
     top: 0,
     right: 0,
     padding: theme.paddingSM,
+    zIndex: 900,
     '&:hover' : {
         color: 'red'
     }
