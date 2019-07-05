@@ -36,11 +36,6 @@ class AddCompanyModal extends Component {
     });
   };
 
-  handleSubmit(event) {
-    alert("A name was submitted: " + this.state.value);
-    event.preventDefault();
-  }
-
   render() {
     const { classes, open, handleClose, handleAddTarget } = this.props;
     return (

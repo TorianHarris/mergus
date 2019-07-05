@@ -2,6 +2,7 @@ import React from "react";
 import injectSheet from "react-jss";
 
 import ActionButton from "./actionButton";
+//import img from "../logos/apple-logo.png";
 
 const styles = theme => ({
   logo: {
@@ -22,12 +23,13 @@ const handleClick = () => {
   alert("Hello noob");
 };
 
+
 const Brand = ({ classes, name, info }) => (
   <div className={classes.container}>
-    <img
+    {/* <img
       className={classes.logo}
-      src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/170px-Apple_logo_black.svg.png"
-    />
+      src={img}
+    /> */}
     <h1 className={classes.title}>{name}</h1>
     <ActionButton click={handleClick} icon="edit" />
     <p>{info}</p>

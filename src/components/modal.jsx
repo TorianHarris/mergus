@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import injectSheet from "react-jss";
 
 const styles = theme => ({
-  modalContainer: {
+  modalContainer:{
     position: "fixed",
     top: 0,
     left: 0,
@@ -11,18 +11,21 @@ const styles = theme => ({
     background: "rgba(0, 0, 0, 0.6)",
     zIndex: 999
   },
-  modal: {
+  modal: ({alert}) => ({
+    display: alert ? "flex" : "block",
+    justifyContent: "center",
+    alignItems: "center",
     position: "fixed",
     backgroundColor: "white",
-    width: "90%",
-    height: "90%",
+    width: alert ? "30%" : "90%",
+    height: alert ? "30%" : "90%",
     top: "50%",
     left: "50%",
     transform: "translate(-50%,-50%)",
     overflow: "scroll",
     borderRadius: 4,
     padding: theme.paddingSM
-  }
+  })
 });
 
 class Modal extends Component {

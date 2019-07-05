@@ -18,7 +18,7 @@ const CompanyModal = ({ data, open, handleClose, targetUpdate }) => (
     <hr />
     <Info content={data.description} />
     <Contacts contacts={data.contacts} />
-    <Graph data={data.name} />
+    {/* <Graph data={data.name} /> */}
   </Modal>
 );
 

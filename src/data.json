@@ -20,27 +20,32 @@
         ]
     },
     {
-        "name": "Carti",
-        "description": "linagga dlijinnkala kdjkfkaliien aklfaflkndfalk -Carti",
+        "name": "Wells Fargo",
+        "description": "Wells Fargo & Co. is a diversified, community-based financial services company. It is engaged in the provision of banking, insurance, investments, mortgage, and consumer and commercial finance.",
         "earnings": [200, 50, 75, 60],
         "status": "Approved",
         "contacts" : [
             {
-                "name": "B",
-                "position": "Rapper"
+                "name": "Allen Davis",
+                "position": "HR"
             },
             {
-                "name": "Playboi",
-                "position": "Lyrist"
+                "name": "Sarah Daniels",
+                "position": "Designer"
             }
         ]
     },
     {
-        "name": "Shoju",
-        "description": "",
+        "name": "Walt Disney Studios",
+        "description": "Walt Disney Studios (division) The Walt Disney Studios is an American film studio, one of the four business segments of The Walt Disney Company. The studio, one of the 'Big Five' major film studios and best known for its multi-faceted film divisions, is based at the eponymous Walt Disney Studios in Burbank, California.",
         "earnings": [],
         "status": "Researching",
-        "contacts": []
+        "contacts": [
+            {
+                "name": "Lupida Colins",
+                "position" : "CTO"
+            }
+        ]
     }
 
 ]

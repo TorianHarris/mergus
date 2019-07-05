@@ -82,6 +82,20 @@ export default class App extends Component {
       }
     );
   };
+  
+  //find current targets in targets and remove it
+  //TODO: find out why this code works without having to set the set of this.state.targets
+  handleDeleteTarget = () => {
+      const index = this.state.targets.find(el => el === this.state.currentTarget);
+      const newArr = this.state.targets;
+      newArr.splice(index, 1);
+      this.handleDeleteModalClose();
+      //TODO find out why this 
+    // console.log('ds');
+    //   this.setState = ({
+    //       //targets: newArr,
+    //   }, )
+  }
 
   handleDeleteModalOpen = (event, index) => {
     this.setState({
@@ -89,7 +103,6 @@ export default class App extends Component {
         deleteCompanyDisplay: true
       });
     event.stopPropagation();
-    console.log(event)
   };
 
   handleDeleteModalClose = () => {
@@ -120,6 +133,7 @@ export default class App extends Component {
             open={this.state.deleteCompanyDisplay}
             handleClose={this.handleDeleteModalClose}
             target={this.state.currentTarget}
+            handleDeleteTarget={this.handleDeleteTarget}
           />
           <CompanyModal
             data={this.state.currentTarget}
