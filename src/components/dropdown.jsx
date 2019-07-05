@@ -76,7 +76,7 @@ class Dropdown extends Component {
             </span>
           </h3>
         </div>
-        <div ref={el => (this.el = el)}>
+        <div>
           {this.state.open
             ? items.map((item, i, arr) => (
                 <ListCard

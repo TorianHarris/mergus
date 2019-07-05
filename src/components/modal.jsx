@@ -9,18 +9,17 @@ const styles = theme => ({
     width: "100%",
     height: "100%",
     background: "rgba(0, 0, 0, 0.6)",
-    zIndex: 999,
-
+    zIndex: 999
   },
   modal: {
     position: "fixed",
     backgroundColor: "white",
-    width: "92%",
-    height: "92%",
+    width: "90%",
+    height: "90%",
     top: "50%",
     left: "50%",
     transform: "translate(-50%,-50%)",
-    overflow: 'scroll',
+    overflow: "scroll",
     borderRadius: 4,
     padding: theme.paddingSM
   }
@@ -35,10 +34,23 @@ class Modal extends Component {
     };
   }
 
-  handleClick = () => {
-    this.setState({
-      open: !this.state.open
-    });
+  componentWillMount = () => {
+    document.addEventListener("mousedown", this.handleClick);
+  };
+
+  componentWillUnmount = () => {
+    document.removeEventListener("mousedown", this.handleClick);
+  };
+
+  handleClick = e => {
+    if (this.node.contains(e.target)) {
+      this.setState({
+        open: true
+      });
+      return;
+    }
+
+    this.props.close();
   };
 
   handleSelect = item => {
@@ -52,8 +64,8 @@ class Modal extends Component {
   render() {
     const { classes, children, close } = this.props;
     return (
-      <div className={classes.modalContainer} onClick={close}>
-        <div className={classes.modal}>{children}</div>
+      <div className={classes.modalContainer}>
+        <div className={classes.modal} ref={node => (this.node = node)}>{children}</div>
       </div>
     );
   }
