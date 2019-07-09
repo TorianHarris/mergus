@@ -17,7 +17,7 @@ const styles = theme => ({
     alignItems: "center",
     position: "fixed",
     backgroundColor: "white",
-    width: alert ? "30%" : "90%",
+    width: alert ? "60%" : "90%",
     height: alert ? "30%" : "90%",
     top: "50%",
     left: "50%",
